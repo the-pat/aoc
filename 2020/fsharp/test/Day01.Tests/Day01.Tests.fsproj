@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Input.fs" />
     <Compile Include="Day01.Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
@@ -29,5 +28,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Day01\Day01.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="input.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
