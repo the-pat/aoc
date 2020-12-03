@@ -3,6 +3,8 @@ module Day01.Tests
 open FsUnit.Xunit
 open Xunit
 
+open Day01
+
 let private input path =
     path
     |> System.IO.File.ReadLines
