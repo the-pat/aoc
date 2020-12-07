@@ -1,31 +1,37 @@
 ﻿module Day02
 
-type Policy = int * int * char * string
+open System.IO
 
-let private parse (str: string): Policy =
-    match str.Split [| ' '; ':'; '-' |] with
-    | [| min; max; c; _; password |] -> ((int min), (int max), (char c), password)
-    | _ -> (0, 0, ' ', "")
+let private policies path =
+    path
+    |> File.ReadLines
+    |> Seq.map (fun line ->
+        let items = line.Split ' '
+        let range = items.[0].Split '-'
+        int range.[0], int range.[1], items.[1].[0], items.[2])
 
-let private validate (min, max, c, password: string) =
-    let amount =
+let private isValid (min, max, letter, password) =
+    let occurances =
         password
-        |> Seq.filter (fun element -> element = c)
-        |> Seq.length
+        |> String.filter ((=) letter)
+        |> String.length
 
-    amount >= min && amount <= max
+    occurances >= min && occurances <= max
 
-let validPasswordCount passwords =
-    passwords
-    |> Seq.map parse
-    |> Seq.filter validate
+let validPasswordCount path =
+    path
+    |> policies
+    |> Seq.filter isValid
     |> Seq.length
 
-let private validate2 (p1, p2, c, password: string) =
-    (password.[p1 - 1] = c) <> (password.[p2 - 1] = c)
+let private isValid2 (first, second, letter, password: string) =
+    match password.[first - 1] = letter, password.[second - 1] = letter with
+    | true, false
+    | false, true -> true
+    | _ -> false
 
-let validPasswordCount2 passwords =
-    passwords
-    |> Seq.map parse
-    |> Seq.filter validate2
+let validPasswordCount2 path =
+    path
+    |> policies
+    |> Seq.filter isValid2
     |> Seq.length
