@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="test-input.txt" CopyToOutputDirectory="PreserveNewest" />
     <None Include="input.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

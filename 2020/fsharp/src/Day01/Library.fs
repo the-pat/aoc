@@ -1,25 +1,35 @@
 ﻿module Day01
 
-let rec expenseReport entries =
-    match entries with
-    | a :: tail ->
-        match List.tryFind (fun otherEntry -> otherEntry = (2020 - a)) tail with
-        | Some b -> Ok(a * b)
-        | None -> expenseReport tail
-    | [] -> Error "No entry found"
+open System.IO
 
-let rec private loop a tail =
-    match tail with
-    | b :: otherTail ->
-        match List.tryFind (fun c -> c = (2020 - a - b)) otherTail with
-        | Some c -> Some(b, c)
-        | None -> loop a otherTail
-    | [] -> None
+let private entries path =
+    path
+    |> File.ReadLines
+    |> Seq.map int
+    |> Seq.toArray
 
-let rec expenseReport2 entries =
-    match entries with
-    | a :: tail ->
-        match loop a tail with
-        | Some (b, c) -> Ok(a * b * c)
-        | None -> expenseReport2 tail
-    | [] -> Error "No entry found"
+let rec private findAndProduct value items =
+    items
+    |> Seq.tryFind (List.sum >> (=) value)
+    |> Option.map (List.reduce (*))
+
+let expenseReport path =
+    let values = entries path
+
+    seq {
+        for a in values do
+            for b in values do
+                [ a; b ]
+    }
+    |> findAndProduct 2020
+
+let expenseReport2 path =
+    let values = entries path
+
+    seq {
+        for a in values do
+            for b in values do
+                for c in values do
+                    [ a; b; c ]
+    }
+    |> findAndProduct 2020
