@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="data\test-input.txt" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="data\input.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="data\small.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="data\large.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

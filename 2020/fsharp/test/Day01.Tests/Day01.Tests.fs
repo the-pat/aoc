@@ -5,34 +5,20 @@ open Xunit
 
 open Day01
 
-[<Fact>]
-let ``Should find the product of the two entries whose sum equals 2020`` () =
-    let expected = Some 514579
-
-    "test-input.txt"
+[<Theory>]
+[<InlineData("small", 514579)>]
+[<InlineData("large", 605364)>]
+let ``Part 1: Find the product of 2 entries that sum to equal 2020`` (file, expected: int) =
+    file
+    |> sprintf "data/%s.txt"
     |> expenseReport
-    |> should equal expected
+    |> should equal (Some expected)
 
-[<Fact>]
-let ``Should find the product of the two entries for day 1`` () =
-    let expected = Some 605364
-
-    "input.txt"
-    |> expenseReport
-    |> should equal expected
-
-[<Fact>]
-let ``Should find the product of the three entries whose sum equals 2020`` () =
-    let expected = Some 241861950
-
-    "test-input.txt"
+[<Theory>]
+[<InlineData("small", 241861950)>]
+[<InlineData("large", 128397680)>]
+let ``Part 2: Find the product of 3 entries that sum to equal 2020`` (file, expected: int) =
+    file
+    |> sprintf "data/%s.txt"
     |> expenseReport2
-    |> should equal expected
-
-[<Fact>]
-let ``Should find the product of the three entries for day 1`` () =
-    let expected = Some 128397680
-
-    "input.txt"
-    |> expenseReport2
-    |> should equal expected
+    |> should equal (Some expected)
