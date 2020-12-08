@@ -1,14 +1,8 @@
 ﻿module Day06
 
+open Common
 open System
 open System.IO
-
-let private groupByLines (file: string) =
-    file.Split([| Environment.NewLine + Environment.NewLine |], StringSplitOptions.RemoveEmptyEntries)
-    |> Array.map (fun group ->
-        group.Split([| Environment.NewLine |], StringSplitOptions.RemoveEmptyEntries)
-        |> Array.toList)
-    |> Array.toList
 
 let private answers path = path |> File.ReadAllText |> groupByLines
 

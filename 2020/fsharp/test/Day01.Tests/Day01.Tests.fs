@@ -1,5 +1,6 @@
 module Day01.Tests
 
+open Common
 open FsUnit.Xunit
 open Xunit
 
@@ -9,8 +10,7 @@ open Day01
 [<InlineData("small", 514579)>]
 [<InlineData("large", 605364)>]
 let ``Part 1: Find the product of 2 entries that sum to equal 2020`` (file, expected: int) =
-    file
-    |> sprintf "data/%s.txt"
+    Files.[file]
     |> expenseReport
     |> should equal (Some expected)
 
@@ -18,7 +18,6 @@ let ``Part 1: Find the product of 2 entries that sum to equal 2020`` (file, expe
 [<InlineData("small", 241861950)>]
 [<InlineData("large", 128397680)>]
 let ``Part 2: Find the product of 3 entries that sum to equal 2020`` (file, expected: int) =
-    file
-    |> sprintf "data/%s.txt"
+    Files.[file]
     |> expenseReport2
     |> should equal (Some expected)

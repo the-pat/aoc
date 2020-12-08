@@ -1,5 +1,6 @@
 ﻿module Day04
 
+open Common
 open FsToolkit.ErrorHandling
 open System
 open System.IO
@@ -86,13 +87,6 @@ type PassportField =
         | [ "pid"; Digits 9 ] -> Ok PassportId
         | [ "cid"; _ ] -> Ok CountryId
         | header -> Error(sprintf "Invalid %A" header)
-
-let private groupByLines (file: string) =
-    file.Split([| Environment.NewLine + Environment.NewLine |], StringSplitOptions.RemoveEmptyEntries)
-    |> Array.map (fun group ->
-        group.Split([| Environment.NewLine |], StringSplitOptions.RemoveEmptyEntries)
-        |> Array.toList)
-    |> Array.toList
 
 let private passports path = path |> File.ReadAllText |> groupByLines
 

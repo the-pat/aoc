@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Day06.Tests.fs" />
+    <Compile Include="Common.Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
@@ -27,14 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Day06\Day06.fsproj" />
     <ProjectReference Include="..\..\src\Common\Common.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="data/small.txt" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="data/medium.txt" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="data/large.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="data/one-group.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="data/two-groups.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="data/three-groups.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

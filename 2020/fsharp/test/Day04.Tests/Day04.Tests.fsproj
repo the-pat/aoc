@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Day04\Day04.fsproj" />
+    <ProjectReference Include="..\..\src\Common\Common.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 module Day05.Tests
 
+open Common
 open FsUnit.Xunit
 open Xunit
 
@@ -8,8 +9,7 @@ open Xunit
 [<InlineData("medium", 820)>]
 [<InlineData("large", 926)>]
 let ``Part 1: Find the highest seat ID`` (file, expected) =
-    file
-    |> (sprintf "data/%s.txt")
+    Files.[file]
     |> findHighestSeatId
     |> should equal expected
 
@@ -17,6 +17,6 @@ let ``Part 1: Find the highest seat ID`` (file, expected) =
 let ``Part 2: Find your seat id`` () =
     let expected = 657
 
-    "data/large.txt"
+    Files.["large"]
     |> findMissingSeatId
     |> should equal expected

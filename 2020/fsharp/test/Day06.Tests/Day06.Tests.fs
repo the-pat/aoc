@@ -1,5 +1,6 @@
 module Tests
 
+open Common
 open FsUnit.Xunit
 open Xunit
 
@@ -10,8 +11,7 @@ open Day06
 [<InlineData("medium", 11)>]
 [<InlineData("large", 6809)>]
 let ``Part 1: Find the sum of the distinct "yes" questions per group`` (file, expected: int) =
-    file
-    |> sprintf "data/%s.txt"
+    Files.[file]
     |> countYesesPerGroup
     |> should equal expected
 
@@ -20,7 +20,6 @@ let ``Part 1: Find the sum of the distinct "yes" questions per group`` (file, ex
 [<InlineData("medium", 6)>]
 [<InlineData("large", 3394)>]
 let ``Part 2: Find the sum of the questions that everyone answered "yes" to per group`` (file, expected: int) =
-    file
-    |> sprintf "data/%s.txt"
+    Files.[file]
     |> countAllYesesPerGroup
     |> should equal expected

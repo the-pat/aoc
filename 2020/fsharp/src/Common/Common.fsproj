@@ -8,8 +8,4 @@
     <Compile Include="Library.fs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.fsproj" />
-  </ItemGroup>
-
 </Project>

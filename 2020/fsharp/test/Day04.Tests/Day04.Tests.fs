@@ -1,5 +1,6 @@
 module Day04.Tests
 
+open Common
 open FsUnit.Xunit
 open Xunit
 
@@ -9,8 +10,7 @@ open Day04
 [<InlineData("small", 2)>]
 [<InlineData("large", 170)>]
 let ``Part 1: Should find the correct number of valid passports`` (file, expected: int) =
-    file
-    |> sprintf "data/%s.txt"
+    Files.[file]
     |> validPassportCount
     |> should equal expected
 
@@ -19,7 +19,6 @@ let ``Part 1: Should find the correct number of valid passports`` (file, expecte
 [<InlineData("valid", 4)>]
 [<InlineData("large", 103)>]
 let ``Part 2: Should find the correct number of valid passports`` (file, expected: int) =
-    file
-    |> sprintf "data/%s.txt"
+    Files.[file]
     |> validPassportCount2
     |> should equal expected
